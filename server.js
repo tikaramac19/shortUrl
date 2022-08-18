@@ -1,17 +1,25 @@
-const express = require('express');
+const express = require("express");
 const app = express();
+const mongoose = require("mongoose");
 
-app.set('view engine','ejs' )
+// connect to the database
 
-app.get('/', (req,res)=>{
-   res.render('index')
-})
-
-app.post("/shortUrl", (req,res)=>{
-    
-})
+mongoose.connect("mongodb://localhost/urlShortner", {
+    useNewUrlParser: true,
+    useUnifiedTopology: true
+});
 
 
-app.listen(8080, ()=>{
-    console.log("server started at http://localhost:8080")
+
+
+app.set("view engine", "ejs");
+
+app.get("/", (req, res) => {
+  res.render("index");
+});
+
+app.post("/shortUrl", (req, res) => {});
+
+app.listen(8080, () => {
+  console.log("server started at http://localhost:8080");
 });
